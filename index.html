@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="test">
+      Input from html
+      <input type="text" maxlength="5" readonly id="test" class="input-style" />
+    </label>
+    <div>This is second division from html</div>
+
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const input = (
+        <React.Fragment>
+          <label htmlFor="test1">
+            Input from JSX
+            <input
+              id="test1 "
+              type="text"
+              maxLength="5"
+              readOnly
+              className="input-style"
+            />
+          </label>
+          <div>This is second division from JSX</div>
+        </React.Fragment>
+      );
+
+      ReactDOM.render(input, document.getElementById("root"));
+    </script>
+  </body>
+</html>
+
+=================================================
+<!-- 
+1) Rendering with HTML 
+2) Bootstraping React in HTML
+3) Render an element with ReactElement
+4) Render nested element eith ReactELement
+5) What is JSX
+6) Creating view with JSX
+7) The relationship between HTML , JSX 
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main id="root">
+      <h1>My Blog</h1>
+      <article>
+        <h2>My First Post</h2>
+        <p class="text">Rhis is the COntent of Post</p>
+      </article>
+    </main>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+  </body>
+</html>
+
+============================================
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <main id="root">
+      <h1>My Blog</h1>
+      <article>
+        <h2>My First Post</h2>
+        <p class="text">Rhis is the COntent of Post</p>
+      </article>
+    </main> -->
+    <button type="button" id="test">ClickMe</button>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script>
+      // React.createElement('element name', propert'es object , children)
+
+      const button = React.createElement(
+        "button",
+        {
+          type: "button",
+          id: "test",
+        },
+        "ClickMe"
+      );
+
+      ReactDOM.render(button, document.getElementById("root"));
+    </script>
+  </body>
+</html>
+===========================================================
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button type="button" id="test">ClickMe</button> -->
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!-- <main id="mainContainer">
+      <h1>My Blog</h1>
+      <article>
+        <h2>My First Post</h2>
+        <p class="text">this is the COntent of Post</p>
+      </article>
+    </main> -->
+    <script>
+      const articleHeading = React.createElement("h2", {}, "My First Post");
+
+      const articlePera = React.createElement(
+        "p",
+        { className: "text" },
+        "this is the COntent of Post"
+      );
+
+      const mainArticle = React.createElement(
+        "article",
+        null,
+        articleHeading,
+        articlePera
+      );
+
+      const mainheding = React.createElement("h1", {}, "My Blog");
+
+      const main = React.createElement(
+        "main",
+        { id: "mainContainer" },
+        mainheding,
+        mainArticle
+      );
+
+      ReactDOM.render(main, document.getElementById("root"));
+    </script>
+  </body>
+</html>
+
+==========================================================
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button" id="test">ClickMe</button>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!-- <main id="mainContainer">
+      <h1>My Blog</h1>
+      <article>
+        <h2>My First Post</h2>
+        <p class="text">this is the COntent of Post</p>
+      </article>
+    </main> -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // React element
+      // const btn = React.createElement("button", { type: button }, "clickme!!!");
+
+      // JSX
+      //  const button = <button type="button" id="test">ClickMe</button>
+
+      const main = (
+        <main id="mainContainer">
+          <h1>My Blog</h1>
+          <article>
+            <h2>My First Post</h2>
+            <p className="text">This is the COntent of Post</p>
+          </article>
+        </main>
+      );
+
+      ReactDOM.render(main, document.getElementById("root"));
+    </script>
+  </body>
+</html>
+
+==================================
