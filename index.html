@@ -7,12 +7,6 @@
     <title>Document</title>
   </head>
   <body>
-    <label for="test">
-      Input from html
-      <input type="text" maxlength="5" readonly id="test" class="input-style" />
-    </label>
-    <div>This is second division from html</div>
-
     <div id="root"></div>
     <script
       crossorigin
@@ -26,39 +20,66 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-      const input = (
-        <React.Fragment>
-          <label htmlFor="test1">
-            Input from JSX
-            <input
-              id="test1 "
-              type="text"
-              maxLength="5"
-              readOnly
-              className="input-style"
-            />
-          </label>
-          <div>This is second division from JSX</div>
-        </React.Fragment>
+      // const ParaGraphComponent = (props) => {
+      //   // console.log(propobj);
+      //   return <p id={props.myownId}>{props.text}</p>;
+      // };
+
+      // // ParaGraphComponent({text:'sarang jain'})
+      // const container = (
+      //   <div>
+      //     {<ParaGraphComponent text="my name is sarang jain" myownId="name" />}
+      //     {<ParaGraphComponent text="my name is Om" myownId="omid" />}
+      //     {<ParaGraphComponent text="my name is gaurav" myownId="gauravid" />}
+      //   </div>
+      // );
+
+      const ErrorBlock = (props) => {
+        return props.error.hasError ? (
+          <p>{props.error.message}</p>
+        ) : (
+          <p>tehere is no error</p>
+        );
+      };
+
+      const errorobj = { hasError: true, message: "het there is some error" };
+
+      const container = (
+        <div>
+          <ErrorBlock error={errorobj} />
+        </div>
       );
 
-      ReactDOM.render(input, document.getElementById("root"));
+      ReactDOM.render(container, document.getElementById("root"));
+
+      /*
+     Assignment
+      const FamilyInformation = (props) => {
+        return <div>
+                    <p>fathername {props.familiobj.fn } </p>
+              </div>
+          }
+
+        
+      const container  = <FamilyInformation wholeInf0 = {familyObj}>
+
+      */
     </script>
   </body>
 </html>
 
-=================================================
-<!-- 
-1) Rendering with HTML 
-2) Bootstraping React in HTML
-3) Render an element with ReactElement
-4) Render nested element eith ReactELement
-5) What is JSX
-6) Creating view with JSX
-7) The relationship between HTML , JSX 
 
--->
+==========================
+1) Interpolation in JSX
+2) expression in jsx
+3) Introductionto component
+4) Component in react
+5) passing props to tjhe compoonet
+6) create <FamilyComponent fn="" mn="" />
 
+
+1) Interpolation in JSX
+========================
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,43 +89,6 @@
     <title>Document</title>
   </head>
   <body>
-    <main id="root">
-      <h1>My Blog</h1>
-      <article>
-        <h2>My First Post</h2>
-        <p class="text">Rhis is the COntent of Post</p>
-      </article>
-    </main>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-    ></script>
-  </body>
-</html>
-
-============================================
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <!-- <main id="root">
-      <h1>My Blog</h1>
-      <article>
-        <h2>My First Post</h2>
-        <p class="text">Rhis is the COntent of Post</p>
-      </article>
-    </main> -->
-    <button type="button" id="test">ClickMe</button>
     <div id="root"></div>
     <script
       crossorigin
@@ -114,129 +98,219 @@
       crossorigin
       src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
     ></script>
-    <script>
-      // React.createElement('element name', propert'es object , children)
 
-      const button = React.createElement(
-        "button",
-        {
-          type: "button",
-          id: "test",
-        },
-        "ClickMe"
-      );
-
-      ReactDOM.render(button, document.getElementById("root"));
-    </script>
-  </body>
-</html>
-===========================================================
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <!-- <button type="button" id="test">ClickMe</button> -->
-    <div id="root"></div>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-    ></script>
-    <!-- <main id="mainContainer">
-      <h1>My Blog</h1>
-      <article>
-        <h2>My First Post</h2>
-        <p class="text">this is the COntent of Post</p>
-      </article>
-    </main> -->
-    <script>
-      const articleHeading = React.createElement("h2", {}, "My First Post");
-
-      const articlePera = React.createElement(
-        "p",
-        { className: "text" },
-        "this is the COntent of Post"
-      );
-
-      const mainArticle = React.createElement(
-        "article",
-        null,
-        articleHeading,
-        articlePera
-      );
-
-      const mainheding = React.createElement("h1", {}, "My Blog");
-
-      const main = React.createElement(
-        "main",
-        { id: "mainContainer" },
-        mainheding,
-        mainArticle
-      );
-
-      ReactDOM.render(main, document.getElementById("root"));
-    </script>
-  </body>
-</html>
-
-==========================================================
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <button type="button" id="test">ClickMe</button>
-    <div id="root"></div>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-    ></script>
-    <!-- <main id="mainContainer">
-      <h1>My Blog</h1>
-      <article>
-        <h2>My First Post</h2>
-        <p class="text">this is the COntent of Post</p>
-      </article>
-    </main> -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-      // React element
-      // const btn = React.createElement("button", { type: button }, "clickme!!!");
+      const someText = "I am a vanilla ice cream";
+      const vanillaIceCreaClassName = "ice-cream-decoration";
 
-      // JSX
-      //  const button = <button type="button" id="test">ClickMe</button>
-
-      const main = (
-        <main id="mainContainer">
-          <h1>My Blog</h1>
-          <article>
-            <h2>My First Post</h2>
-            <p className="text">This is the COntent of Post</p>
-          </article>
-        </main>
+      console.log(
+        `${someText} and this is classssname ${vanillaIceCreaClassName}`
       );
 
-      ReactDOM.render(main, document.getElementById("root"));
+      const container = (
+        <div className={vanillaIceCreaClassName}>{someText}</div>
+      );
+
+      ReactDOM.render(container, document.getElementById("root"));
     </script>
   </body>
 </html>
 
-==================================
+2) expression in jsx
+===============================
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      let a = 20;
+      const b = 10;
+
+      const testfn = () => "I am returning a dummy text";
+
+      const isError = true;
+
+      const container = (
+        <div>
+          <p>{a * b}</p>
+          <p>{testfn()}</p>
+          <p>{(() => "I am another text return by function")()}</p>
+
+          <p className={isError ? "error" : "success"}>
+            {isError ? (
+              <span>Heyyy error is there</span>
+            ) : (
+              <span>Every thing is ok</span>
+            )}
+          </p>
+        </div>
+      );
+
+      ReactDOM.render(container, document.getElementById("root"));
+    </script>
+  </body>
+</html>
+
+4) Component in react
+======================
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const getText = (name) => `Hello greeting for the day mr ${name}`;
+
+      const getNumber = (a, b) => a + b;
+
+      const getObj = () => {
+        return { name: "sarang jain", age: 30 };
+      };
+
+      // function can return jsx as well
+      const peragraph = () => <p>My name is Sarang Jain</p>;
+
+      // console.log(<p>i am paragrapg</p>);
+      // console.log(React.createElement("p", {}, "i am paragrapg"));
+
+      /*
+      Componet :- Component are javascript functions which will return somethind renderrable, or which return some view and they will sratr from capiatl letter
+      */
+
+      const ParaGraphComponent = () => {
+        return <p>My name is sarang jain , and i am a component</p>;
+      };
+
+      const FormComponent = () => {
+        return (
+          <form>
+            usename: <input type="text" />
+          </form>
+        );
+      };
+
+      const container = (
+        <div>
+          <p>{getText("sarang jain")}</p>
+          <p>{getNumber(20, 20)}</p>
+          <p>{JSON.stringify(getObj())}</p>
+          {peragraph()}
+          {<ParaGraphComponent />}
+          {<FormComponent />}
+        </div>
+      );
+
+      ReactDOM.render(container, document.getElementById("root"));
+    </script>
+  </body>
+</html>
+
+5) passing props to in the compoonet
+===========
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // const ParaGraphComponent = (props) => {
+      //   // console.log(propobj);
+      //   return <p id={props.myownId}>{props.text}</p>;
+      // };
+
+      // // ParaGraphComponent({text:'sarang jain'})
+      // const container = (
+      //   <div>
+      //     {<ParaGraphComponent text="my name is sarang jain" myownId="name" />}
+      //     {<ParaGraphComponent text="my name is Om" myownId="omid" />}
+      //     {<ParaGraphComponent text="my name is gaurav" myownId="gauravid" />}
+      //   </div>
+      // );
+
+      const ErrorBlock = (props) => {
+        return props.error.hasError ? (
+          <p>{props.error.message}</p>
+        ) : (
+          <p>tehere is no error</p>
+        );
+      };
+
+      const errorobj = { hasError: true, message: "het there is some error" };
+
+      const container = (
+        <div>
+          <ErrorBlock error={errorobj} />
+        </div>
+      );
+
+      ReactDOM.render(container, document.getElementById("root"));
+
+      /*
+     Assignment
+      const FamilyInformation = (props) => {
+        return <div>
+                    <p>fathername {props.familiobj.fn } </p>
+              </div>
+          }
+
+        
+      const container  = <FamilyInformation wholeInf0 = {familyObj}>
+
+      */
+    </script>
+  </body>
+</html>
+
+
