@@ -1,3 +1,4 @@
+----------- FamilyComponent assignment with solution-----
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,219 +21,29 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-      // const ParaGraphComponent = (props) => {
-      //   // console.log(propobj);
-      //   return <p id={props.myownId}>{props.text}</p>;
-      // };
-
-      // // ParaGraphComponent({text:'sarang jain'})
-      // const container = (
-      //   <div>
-      //     {<ParaGraphComponent text="my name is sarang jain" myownId="name" />}
-      //     {<ParaGraphComponent text="my name is Om" myownId="omid" />}
-      //     {<ParaGraphComponent text="my name is gaurav" myownId="gauravid" />}
-      //   </div>
-      // );
-
-      const ErrorBlock = (props) => {
-        return props.error.hasError ? (
-          <p>{props.error.message}</p>
-        ) : (
-          <p>tehere is no error</p>
-        );
-      };
-
-      const errorobj = { hasError: true, message: "het there is some error" };
-
-      const container = (
-        <div>
-          <ErrorBlock error={errorobj} />
-        </div>
-      );
-
-      ReactDOM.render(container, document.getElementById("root"));
-
-      /*
-     Assignment
-      const FamilyInformation = (props) => {
-        return <div>
-                    <p>fathername {props.familiobj.fn } </p>
-              </div>
-          }
-
-        
-      const container  = <FamilyInformation wholeInf0 = {familyObj}>
-
-      */
-    </script>
-  </body>
-</html>
-
-
-==========================
-1) Interpolation in JSX
-2) expression in jsx
-3) Introductionto component
-4) Component in react
-5) passing props to tjhe compoonet
-6) create <FamilyComponent fn="" mn="" />
-
-
-1) Interpolation in JSX
-========================
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-    ></script>
-
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <script type="text/babel">
-      const someText = "I am a vanilla ice cream";
-      const vanillaIceCreaClassName = "ice-cream-decoration";
-
-      console.log(
-        `${someText} and this is classssname ${vanillaIceCreaClassName}`
-      );
-
-      const container = (
-        <div className={vanillaIceCreaClassName}>{someText}</div>
-      );
-
-      ReactDOM.render(container, document.getElementById("root"));
-    </script>
-  </body>
-</html>
-
-2) expression in jsx
-===============================
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-    ></script>
-
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <script type="text/babel">
-      let a = 20;
-      const b = 10;
-
-      const testfn = () => "I am returning a dummy text";
-
-      const isError = true;
-
-      const container = (
-        <div>
-          <p>{a * b}</p>
-          <p>{testfn()}</p>
-          <p>{(() => "I am another text return by function")()}</p>
-
-          <p className={isError ? "error" : "success"}>
-            {isError ? (
-              <span>Heyyy error is there</span>
-            ) : (
-              <span>Every thing is ok</span>
-            )}
-          </p>
-        </div>
-      );
-
-      ReactDOM.render(container, document.getElementById("root"));
-    </script>
-  </body>
-</html>
-
-4) Component in react
-======================
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-    ></script>
-
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <script type="text/babel">
-      const getText = (name) => `Hello greeting for the day mr ${name}`;
-
-      const getNumber = (a, b) => a + b;
-
-      const getObj = () => {
-        return { name: "sarang jain", age: 30 };
-      };
-
-      // function can return jsx as well
-      const peragraph = () => <p>My name is Sarang Jain</p>;
-
-      // console.log(<p>i am paragrapg</p>);
-      // console.log(React.createElement("p", {}, "i am paragrapg"));
-
-      /*
-      Componet :- Component are javascript functions which will return somethind renderrable, or which return some view and they will sratr from capiatl letter
-      */
-
-      const ParaGraphComponent = () => {
-        return <p>My name is sarang jain , and i am a component</p>;
-      };
-
-      const FormComponent = () => {
+      const FamilyComponent = ({ fn, mn, sn }) => {
         return (
-          <form>
-            usename: <input type="text" />
-          </form>
+          <table border="1">
+            <tr>
+              <td>Father Name</td>
+              <td>Mother Name</td>
+              <td>Sister Name </td>
+            </tr>
+            <tr>
+              <td>{fn}</td>
+              <td>{mn}</td>
+              <td>{sn}</td>
+            </tr>
+          </table>
         );
       };
 
+      // const container = <div>{FamilyComponent()}</div>;
+
       const container = (
         <div>
-          <p>{getText("sarang jain")}</p>
-          <p>{getNumber(20, 20)}</p>
-          <p>{JSON.stringify(getObj())}</p>
-          {peragraph()}
-          {<ParaGraphComponent />}
-          {<FormComponent />}
+          <FamilyComponent fn="p k jain" mn="maya jain" sn="Ojjasvi jain" />
+          <FamilyComponent fn="vinod" mn="tejasvini" sn="shalini" />
         </div>
       );
 
@@ -241,8 +52,7 @@
   </body>
 </html>
 
-5) passing props to in the compoonet
-===========
+----------- this children prop-----
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -265,52 +75,31 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-      // const ParaGraphComponent = (props) => {
-      //   // console.log(propobj);
-      //   return <p id={props.myownId}>{props.text}</p>;
-      // };
+      const Peragraph = ({ text }) => {
+        return <p>{text}</p>;
+      };
 
-      // // ParaGraphComponent({text:'sarang jain'})
-      // const container = (
-      //   <div>
-      //     {<ParaGraphComponent text="my name is sarang jain" myownId="name" />}
-      //     {<ParaGraphComponent text="my name is Om" myownId="omid" />}
-      //     {<ParaGraphComponent text="my name is gaurav" myownId="gauravid" />}
-      //   </div>
-      // );
-
-      const ErrorBlock = (props) => {
-        return props.error.hasError ? (
-          <p>{props.error.message}</p>
-        ) : (
-          <p>tehere is no error</p>
+      const Section = ({ heading, children }) => {
+        return (
+          <section>
+            <h1>{heading}</h1>
+            {children}
+          </section>
         );
       };
 
-      const errorobj = { hasError: true, message: "het there is some error" };
+      const SectionBlock = (props) => {
+        console.log(props);
+        return (
+          <Section heading="my first blog">
+            <Peragraph text="my first peragraph" />
+            <Peragraph text="my secong peragraph" />
+            <Peragraph text="my third peragraph" />
+          </Section>
+        );
+      };
 
-      const container = (
-        <div>
-          <ErrorBlock error={errorobj} />
-        </div>
-      );
-
-      ReactDOM.render(container, document.getElementById("root"));
-
-      /*
-     Assignment
-      const FamilyInformation = (props) => {
-        return <div>
-                    <p>fathername {props.familiobj.fn } </p>
-              </div>
-          }
-
-        
-      const container  = <FamilyInformation wholeInf0 = {familyObj}>
-
-      */
+      ReactDOM.render(<SectionBlock />, document.getElementById("root"));
     </script>
   </body>
 </html>
-
-
